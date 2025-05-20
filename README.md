@@ -1,5 +1,9 @@
 # TechStore
-Sistema para Vendas Online de Equipamentos Electónicos ref. ao trabalho semestral da disciplina de Programação Web
+Sistema para Vendas Online de Equipamentos Electónicos ref. ao trabalho semestral da disciplina de Programação Web.
+Desenvolvido pelos estudantes: 
+Filomena Lopes Gaspar -GitHub: filomena2002
+João Langa - GitHub: LangaJoao
+Ussene Carlos Matato -GitHub: ussenematato
 
 # Requisitos Funcionais
 * Produtos 

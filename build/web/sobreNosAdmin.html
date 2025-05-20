@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sobre Nós - TechStore Moçambique</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <style>
+            /* Mantendo todos os estilos anteriores do header, footer e elementos comuns */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            :root {
+                --primary: #3498db;
+                --secondary: #2c3e50;
+                --accent: #e74c3c;
+                --light: #ecf0f1;
+                --dark: #2c3e50;
+            }
+
+            body {
+                background-color: #f5f7fa;
+                color: #333;
+                line-height: 1.6;
+            }
+
+            header {
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                color: white;
+                padding: 1rem 0;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .container {
+                width: 90%;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem 0;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+            }
+
+            .logo span {
+                color: var(--accent);
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 1.5rem;
+            }
+
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.3s;
+            }
+
+            .nav-links a:hover {
+                color: var(--accent);
+            }
+
+            .banner {
+                background: url('https://source.unsplash.com/random/1200x400/?maputo') center/cover;
+                height: 400px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: white;
+                position: relative;
+            }
+
+            .banner::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 1;
+            }
+
+            .banner-content {
+                z-index: 2;
+                padding: 2rem;
+            }
+
+            .banner h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .banner p {
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .btn {
+                display: inline-block;
+                background-color: var(--accent);
+                color: white;
+                padding: 0.8rem 1.5rem;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: 500;
+                transition: background-color 0.3s;
+            }
+
+            .btn:hover {
+                background-color: #c0392b;
+            }
+
+            .features {
+                padding: 3rem 0;
+                background-color: white;
+            }
+
+            .section-title {
+                text-align: center;
+                margin-bottom: 2rem;
+                color: var(--dark);
+            }
+
+            .features-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+            }
+
+            .feature-card {
+                background-color: white;
+                border-radius: 8px;
+                padding: 1.5rem;
+                text-align: center;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+                transition: transform 0.3s;
+            }
+
+            .feature-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .feature-icon {
+                font-size: 2.5rem;
+                color: var(--primary);
+                margin-bottom: 1rem;
+            }
+
+            .feature-card h3 {
+                margin-bottom: 0.5rem;
+                color: var(--dark);
+            }
+
+            .products {
+                padding: 3rem 0;
+            }
+
+            .products-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+
+            .product-card {
+                background-color: white;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+                transition: transform 0.3s;
+            }
+
+            .product-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .product-img {
+                height: 200px;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .product-info {
+                padding: 1.5rem;
+            }
+
+            .product-title {
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+                color: var(--dark);
+            }
+
+            .product-price {
+                font-size: 1.3rem;
+                font-weight: 700;
+                color: var(--accent);
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .product-price span {
+                font-size: 0.9rem;
+                color: #666;
+                font-weight: normal;
+            }
+
+            .product-description {
+                color: #666;
+                margin-bottom: 1rem;
+            }
+
+            .testimonials {
+                padding: 3rem 0;
+                background-color: var(--light);
+            }
+
+            .testimonials-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+
+            .testimonial-card {
+                background-color: white;
+                border-radius: 8px;
+                padding: 1.5rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            }
+
+            .testimonial-text {
+                font-style: italic;
+                margin-bottom: 1rem;
+            }
+
+            .testimonial-author {
+                display: flex;
+                align-items: center;
+            }
+
+            .author-img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                margin-right: 1rem;
+                object-fit: cover;
+            }
+
+            .author-info h4 {
+                margin-bottom: 0.2rem;
+            }
+
+            .author-info p {
+                color: #666;
+                font-size: 0.9rem;
+            }
+
+            .cta {
+                padding: 4rem 0;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                color: white;
+                text-align: center;
+            }
+
+            .cta h2 {
+                margin-bottom: 1rem;
+                font-size: 2rem;
+            }
+
+            .cta p {
+                margin-bottom: 2rem;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            footer {
+                background-color: var(--dark);
+                color: white;
+                padding: 3rem 0 1rem;
+            }
+
+            .footer-content {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .footer-column h3 {
+                margin-bottom: 1rem;
+                font-size: 1.2rem;
+            }
+
+            .footer-links {
+                list-style: none;
+            }
+
+            .footer-links li {
+                margin-bottom: 0.5rem;
+            }
+
+            .footer-links a {
+                color: #bdc3c7;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+            .footer-links a:hover {
+                color: white;
+            }
+
+            .social-icons {
+                display: flex;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .social-icons a {
+                color: white;
+                font-size: 1.2rem;
+                transition: color 0.3s;
+            }
+
+            .social-icons a:hover {
+                color: var(--accent);
+            }
+
+            .footer-bottom {
+                text-align: center;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .footer-bottom p {
+                color: #bdc3c7;
+                font-size: 0.9rem;
+            }
+
+            .login-btn {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                color: white;
+                text-decoration: none;
+                font-weight: 500;
+                padding: 0.5rem 1rem;
+                border-radius: 4px;
+                background-color: rgba(255, 255, 255, 0.2);
+                transition: all 0.3s;
+            }
+
+            .login-btn:hover {
+                background-color: rgba(255, 255, 255, 0.3);
+                transform: translateY(-2px);
+            }
+
+            @media (max-width: 768px) {
+                .login-btn {
+                    padding: 0.5rem;
+                    font-size: 0;
+                }
+
+                .login-btn::after {
+                    content: "🔑";
+                    font-size: 1rem;
+                }
+
+                .login-btn span {
+                    display: none;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .nav-links {
+                    display: none;
+                }
+
+                .banner h1 {
+                    font-size: 2rem;
+                }
+
+                .banner p {
+                    font-size: 1rem;
+                }
+            }
+            /* Estilos específicos da página Sobre Nós */
+            .about-hero {
+                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/random/1600x900/?technology,maputo') center/cover;
+                height: 60vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: white;
+                position: relative;
+            }
+
+            .about-hero-content {
+                max-width: 800px;
+                padding: 2rem;
+            }
+
+            .about-hero h1 {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+                animation: fadeInDown 1s;
+            }
+
+            .about-hero p {
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+                animation: fadeInUp 1s;
+            }
+
+            .about-mission {
+                padding: 5rem 0;
+                background-color: white;
+            }
+
+            .about-container {
+                width: 90%;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .section-title {
+                text-align: center;
+                margin-bottom: 3rem;
+                color: var(--dark);
+                position: relative;
+                font-size: 2.2rem;
+            }
+
+            .section-title:after {
+                content: '';
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 4px;
+                background-color: var(--accent);
+            }
+
+            .mission-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 3rem;
+                align-items: center;
+            }
+
+            .mission-image img {
+                width: 100%;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s;
+            }
+
+            .mission-image img:hover {
+                transform: scale(1.03);
+            }
+
+            .mission-content h3 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+                color: var(--dark);
+            }
+
+            .mission-content p {
+                margin-bottom: 1.5rem;
+                line-height: 1.8;
+                color: #555;
+            }
+
+            .about-values {
+                padding: 5rem 0;
+                background-color: #f9f9f9;
+            }
+
+            .values-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+            }
+
+            .value-card {
+                background: white;
+                padding: 2rem;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+                text-align: center;
+                transition: transform 0.3s;
+            }
+
+            .value-card:hover {
+                transform: translateY(-10px);
+            }
+
+            .value-icon {
+                font-size: 3rem;
+                color: var(--primary);
+                margin-bottom: 1.5rem;
+            }
+
+            .value-card h4 {
+                font-size: 1.4rem;
+                margin-bottom: 1rem;
+                color: var(--dark);
+            }
+
+            .about-team {
+                padding: 5rem 0;
+                background-color: white;
+            }
+
+            .team-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 3rem;
+            }
+
+            .team-member {
+                text-align: center;
+            }
+
+            .team-photo {
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin: 0 auto 1.5rem;
+                border: 5px solid var(--light);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .team-member h4 {
+                font-size: 1.3rem;
+                margin-bottom: 0.5rem;
+                color: var(--dark);
+            }
+
+            .team-member p {
+                color: var(--primary);
+                font-weight: 500;
+                margin-bottom: 1rem;
+            }
+
+            .team-social {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .team-social a {
+                color: var(--dark);
+                font-size: 1.2rem;
+                transition: color 0.3s;
+            }
+
+            .team-social a:hover {
+                color: var(--primary);
+            }
+
+            .about-numbers {
+                padding: 5rem 0;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                color: white;
+            }
+
+            .numbers-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .number-item h3 {
+                font-size: 3.5rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+            }
+
+            .number-item p {
+                font-size: 1.2rem;
+                opacity: 0.9;
+            }
+
+            /* Animações */
+            @keyframes fadeInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Responsividade */
+            @media (max-width: 768px) {
+                .about-hero h1 {
+                    font-size: 2.2rem;
+                }
+
+                .about-hero p {
+                    font-size: 1rem;
+                }
+
+                .section-title {
+                    font-size: 1.8rem;
+                }
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <nav>
+                    <div class="logo">Tech<span>Store</span></div>
+                    <div class="nav-links">
+                        <a href="homeAdmin.jsp">Início</a>
+                        <a href="produtos.jsp">Produtos</a>
+                        <a href="vendas.jsp">Vendas</a>
+                        <a href="#">Sobre nós</a>
+                        <a href="contactoAdmin.html">Contacto</a>
+                    </div>
+                    <a href="index.jsp" class="login-btn">
+                        <span>Log Out</span> <i class="fas fa-sign-in-alt"></i>
+                    </a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="about-hero">
+            <div class="about-hero-content">
+                <div class="flag-colors">
+                    <span class="flag-green"></span>
+                    <span class="flag-black"></span>
+                    <span class="flag-yellow"></span>
+                    <span class="flag-red"></span>
+                </div>
+                <h1>Nossa História em Moçambique</h1>
+                <p>Transformando o acesso à tecnologia desde 2018, com qualidade e compromisso com o nosso país</p>
+            </div>
+        </section>
+
+
+
+        <section class="about-values">
+            <div class="about-container">
+                <h2 class="section-title">Nossos Valores</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🏅</div>
+                        <h4>Qualidade Garantida</h4>
+                        <p>Todos os nossos produtos passam por rigorosos controles de qualidade antes de chegar até você.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h4>Atendimento Personalizado</h4>
+                        <p>Nossa equipe está preparada para entender suas necessidades e oferecer a melhor solução.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🌱</div>
+                        <h4>Compromisso com Moçambique</h4>
+                        <p>Investimos na formação de jovens talentos e no desenvolvimento tecnológico do país.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">💡</div>
+                        <h4>Inovação Constante</h4>
+                        <p>Sempre em busca das melhores tecnologias para oferecer aos nossos clientes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-numbers">
+            <div class="about-container">
+                <h2 class="section-title" style="color: white;">TechStore em Números</h2>
+                <div class="numbers-grid">
+                    <div class="number-item">
+                        <h3>5+</h3>
+                        <p>Anos no mercado</p>
+                    </div>
+                    <div class="number-item">
+                        <h3>15.000+</h3>
+                        <p>Clientes satisfeitos</p>
+                    </div>
+                    <div class="number-item">
+                        <h3>3</h3>
+                        <p>Províncias atendidas</p>
+                    </div>
+                    <div class="number-item">
+                        <h3>50+</h3>
+                        <p>Marcas parceiras</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-team">
+            <div class="about-container">
+                <h2 class="section-title">Conheça Nossa Equipe</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="imagens/foto.jpg" alt="João Langa" class="team-photo">
+                        <h4>João Langa</h4>
+                        <p>CEO & Fundador</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="imagens/filomena.jpg" alt="Filomena Gaspar" class="team-photo">
+                        <h4>Filomena Gaspar</h4>
+                        <p>Directora Comercial</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="imagens/matato.jpg" alt="Ussene Matato" class="team-photo">
+                        <h4>Ussene Matato</h4>
+                        <p>CTO & Director Financeiro</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+ <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <h3>TechStore Moçambique</h3>
+                        <p>Sua loja de tecnologia com os melhores preços em meticais. Qualidade garantida!</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Links Rápidos</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Início</a></li>
+                            <li><a href="#">Produtos</a></li>
+                            <li><a href="#">Ofertas</a></li>
+                            <li><a href="#">Sobre nós</a></li>
+                            <li><a href="#">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Categorias</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Smartphones</a></li>
+                            <li><a href="#">Notebooks</a></li>
+                            <li><a href="#">Acessórios</a></li>
+                            <li><a href="#">Impressoras</a></li>
+                            <li><a href="#">TVs</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contacte-nos</h3>
+                        <ul class="footer-links">
+                            <li><i class="fas fa-phone"></i> +258 84 672 8470</li>
+                            <li><i class="fas fa-phone"></i> +258 86 672 8470</li>
+                            <li><i class="fas fa-envelope"></i> info@techstore.co.mz</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Av. Julius Nyerere, Campus Universitário, UEM, Maputo</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 TechStore Moçambique. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
